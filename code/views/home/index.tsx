@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {FeedTime} from "@defines/global-types";
 import {STORAGE_KEY,MAX_DISPLAY_RECORD, VOL_LIST} from '@defines/global-const'
 import styles from "./index.module.css";
@@ -8,9 +8,12 @@ import styles from "./index.module.css";
 const Home: NextPage = () => {
   
   const [feedTimes, setFeedTimes] = useState<FeedTime[]>([]);
-   
+   useEffect(()=>{
+     loadFeedTimes()
+   },[])
   const loadFeedTimes = ()=>{
     const json = localStorage.getItem(STORAGE_KEY) ?? "[]";
+    console.log(json);
     const feedTimes = JSON.parse(json);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(feedTimes));
     setFeedTimes(feedTimes);
@@ -45,7 +48,7 @@ const Home: NextPage = () => {
   }
   
   return (
-    <div className={styles.container} onLoad={loadFeedTimes}>
+    <div className={styles.container}>
       <div className={styles.timesContainer}>
           <section className={styles.timeList}>
           {feedTimes.filter((f,i)=>i<MAX_DISPLAY_RECORD).map((ft,idx)=>{
