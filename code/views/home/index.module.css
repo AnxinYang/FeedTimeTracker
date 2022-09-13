@@ -1,0 +1,41 @@
+.container{
+    max-width:800px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.container section{
+    margin:16px 0;
+}
+.timesContainer {
+  display: flex;
+  align-items:flex-end;
+}
+
+.timesContainer span{
+    margin:0;
+    display:block;
+    margin-top:8px;
+    min-width:180px;
+    text-align:center;
+}
+
+
+.timeList{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.volBtn{
+    padding: 4px 8px;
+    border: 1px solid #1565c0;
+    border-radius: 8px;
+    font-size: 32px;
+    display:block;
+    width:200px;
+    margin: 16px;
+    background:#1565c0;
+    color:white;
+}
